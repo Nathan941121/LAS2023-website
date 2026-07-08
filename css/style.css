@@ -135,7 +135,8 @@ img {
 }
 
 .mobile-nav-home,
-.mobile-nav-toggle {
+.mobile-nav-toggle,
+.mobile-nav-contact {
   display: none;
 }
 
@@ -149,25 +150,32 @@ img {
   cursor: pointer;
 }
 
-.mobile-nav-toggle span {
+.mobile-nav-icon {
+  width: 26px;
+  height: 26px;
   display: block;
-  width: 24px;
-  height: 1px;
-  margin: 0 auto;
-  background: #222222;
-  transition: transform 0.25s ease;
 }
 
-.mobile-nav-toggle span + span {
-  margin-top: 7px;
+.mobile-nav-icon-line {
+  fill: none;
+  stroke: #222222;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
 
-.site-header.is-mobile-nav-open .mobile-nav-toggle span:first-child {
-  transform: translateY(4px) rotate(45deg);
+.site-header.is-mobile-nav-open .mobile-nav-icon-line-top {
+  transform: translateY(5px) rotate(45deg);
 }
 
-.site-header.is-mobile-nav-open .mobile-nav-toggle span:last-child {
-  transform: translateY(-4px) rotate(-45deg);
+.site-header.is-mobile-nav-open .mobile-nav-icon-line-middle {
+  opacity: 0;
+}
+
+.site-header.is-mobile-nav-open .mobile-nav-icon-line-bottom {
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 /* ==========================
@@ -545,6 +553,15 @@ img {
 
 .site-footer a:hover {
   opacity: 0.64;
+}
+
+.footer-address-link {
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-address-link:hover {
+  border-color: currentColor;
 }
 
 .footer-contact,
@@ -1879,6 +1896,28 @@ img {
     display: block;
   }
 
+  .mobile-nav-contact {
+    margin-top: 22px;
+    padding-top: 22px;
+    display: grid;
+    gap: 10px;
+    border-top: 1px solid #d8d8d8;
+  }
+
+  .mobile-nav-contact strong {
+    color: #222222;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+
+  .mobile-nav-contact a {
+    padding: 0;
+    border-bottom: 0;
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
   .nav {
     position: absolute;
     top: 66px;
@@ -1910,7 +1949,7 @@ img {
   }
 
   .nav a {
-    padding: 15px 0;
+    padding: 18px 0;
     border-bottom: 1px solid #e2e2e2;
     font-size: 22px;
     line-height: 1.2;
@@ -1949,6 +1988,12 @@ img {
   }
 
   .nav a {
+    padding: 17px 0;
     font-size: 20px;
+  }
+
+  .mobile-nav-contact {
+    margin-top: 20px;
+    padding-top: 20px;
   }
 }

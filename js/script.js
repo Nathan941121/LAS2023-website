@@ -11,14 +11,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav');
   if (!header || !toggle || !nav) return;
 
+  let scrollPosition = 0;
+
+  const lockScroll = () => {
+    scrollPosition = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+  };
+
+  const unlockScroll = () => {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollPosition);
+  };
+
   const closeMenu = () => {
+    const wasOpen = header.classList.contains('is-mobile-nav-open');
     header.classList.remove('is-mobile-nav-open');
     document.body.classList.remove('is-mobile-nav-open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', '메뉴 열기');
+    if (wasOpen) {
+      unlockScroll();
+    }
   };
 
   const openMenu = () => {
+    lockScroll();
     header.classList.add('is-mobile-nav-open');
     document.body.classList.add('is-mobile-nav-open');
     toggle.setAttribute('aria-expanded', 'true');
