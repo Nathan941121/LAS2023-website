@@ -134,6 +134,42 @@ img {
   color: #222222;
 }
 
+.mobile-nav-home,
+.mobile-nav-toggle {
+  display: none;
+}
+
+.mobile-nav-toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  margin: 0 auto;
+  background: #222222;
+  transition: transform 0.25s ease;
+}
+
+.mobile-nav-toggle span + span {
+  margin-top: 7px;
+}
+
+.site-header.is-mobile-nav-open .mobile-nav-toggle span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.site-header.is-mobile-nav-open .mobile-nav-toggle span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
 /* ==========================
    Home Hero
 ========================== */
@@ -1785,5 +1821,134 @@ img {
 
   .about-intro {
     padding: 80px 0 80px;
+  }
+}
+
+/* ==========================
+   Mobile Navigation
+========================== */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 66px;
+  }
+
+  body.is-mobile-nav-open {
+    overflow: hidden;
+  }
+
+  .site-header {
+    position: fixed;
+    right: 0;
+    left: 0;
+    background: rgba(247, 245, 242, 0.98);
+  }
+
+  .site-header.is-scrolled,
+  .site-header.is-mobile-nav-open {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  }
+
+  .site-header-inner,
+  .site-header.is-scrolled .site-header-inner {
+    width: min(100% - 32px, 1280px);
+    height: 66px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo,
+  .logo.logo-image {
+    width: auto;
+    height: auto;
+  }
+
+  .logo img {
+    height: 42px;
+  }
+
+  .mobile-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .mobile-nav-home {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 66px;
+    right: 0;
+    left: 0;
+    max-height: calc(100vh - 66px);
+    margin-top: 0;
+    padding: 22px 32px 30px;
+    display: grid;
+    gap: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    flex-wrap: initial;
+    background: rgba(247, 245, 242, 0.98);
+    border-bottom: 1px solid #d8d8d8;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-header.is-mobile-nav-open .nav {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav a {
+    padding: 15px 0;
+    border-bottom: 1px solid #e2e2e2;
+    font-size: 22px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .nav a::after {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .site-header-inner,
+  .site-header.is-scrolled .site-header-inner {
+    width: min(100% - 28px, 1280px);
+    height: 60px;
+  }
+
+  .logo img {
+    height: 36px;
+  }
+
+  .mobile-nav-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .nav {
+    top: 60px;
+    max-height: calc(100vh - 60px);
+    padding: 18px 24px 26px;
+  }
+
+  .nav a {
+    font-size: 20px;
   }
 }

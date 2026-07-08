@@ -6,6 +6,59 @@ document.addEventListener('scroll', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.mobile-nav-toggle');
+  const nav = document.querySelector('.nav');
+  if (!header || !toggle || !nav) return;
+
+  const closeMenu = () => {
+    header.classList.remove('is-mobile-nav-open');
+    document.body.classList.remove('is-mobile-nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', '메뉴 열기');
+  };
+
+  const openMenu = () => {
+    header.classList.add('is-mobile-nav-open');
+    document.body.classList.add('is-mobile-nav-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', '메뉴 닫기');
+  };
+
+  toggle.addEventListener('click', () => {
+    if (header.classList.contains('is-mobile-nav-open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  nav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!header.classList.contains('is-mobile-nav-open')) return;
+    if (header.contains(event.target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeMenu();
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('collectionSearch');
   const results = document.getElementById('collectionResults');
   const buttons = document.querySelectorAll('[data-filter]');

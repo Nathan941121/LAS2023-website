@@ -38,7 +38,8 @@
     <a href="../index.html" class="logo logo-image" aria-label="LAS2023 Home">
       <img src="../images/logo/logo.png" alt="LAS2023">
     </a>
-    <nav class="nav" aria-label="Main navigation">
+    <nav id="mobileNavigation" class="nav" aria-label="Main navigation">
+      <a href="../index.html" class="mobile-nav-home">Home</a>
       <a href="about.html">About</a>
       <a href="event.html" aria-current="page">Event</a>
       <a href="cinema.html">Cinema</a>
@@ -47,6 +48,10 @@
       <a href="rental.html">Rental</a>
       <a href="system.html">System</a>
     </nav>
+    <button class="mobile-nav-toggle" type="button" aria-label="메뉴 열기" aria-controls="mobileNavigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 <main class="page-main event-page">
