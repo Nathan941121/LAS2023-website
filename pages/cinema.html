@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAS Cinema | LAS2023</title>
+  <meta name="description" content="매주 토요일 LAS2023에서 만나는 영화의 시간. LAS Cinema 상영 포스터와 이용 안내를 확인하세요.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://las2023.com/pages/cinema.html">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="LAS2023">
+  <meta property="og:title" content="LAS Cinema | LAS2023">
+  <meta property="og:description" content="매주 토요일 LAS2023에서 만나는 영화의 시간. LAS Cinema 상영 포스터와 이용 안내를 확인하세요.">
+  <meta property="og:url" content="https://las2023.com/pages/cinema.html">
+  <meta property="og:image" content="https://las2023.com/images/cinema/this-month.jpg">
+  <meta property="og:image:alt" content="LAS2023">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LAS Cinema | LAS2023">
+  <meta name="twitter:description" content="매주 토요일 LAS2023에서 만나는 영화의 시간. LAS Cinema 상영 포스터와 이용 안내를 확인하세요.">
+  <meta name="twitter:image" content="https://las2023.com/images/cinema/this-month.jpg">
+  <link rel="icon" type="image/png" href="../images/logo/logo.png">
+  <link rel="apple-touch-icon" href="../images/logo/logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="../index.html" class="logo logo-image" aria-label="LAS2023 Home">
+      <img src="../images/logo/logo.png" alt="LAS2023">
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="about.html">About</a>
+      <a href="event.html">Event</a>
+      <a href="cinema.html" aria-current="page">Cinema</a>
+      <a href="collection.html">Collection</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="rental.html">Rental</a>
+      <a href="system.html">System</a>
+    </nav>
+  </div>
+</header>
+<main class="page-main cinema-page">
+  <section class="page-hero cinema-hero">
+    <h1>LAS Cinema</h1>
+    <p>상영계획표</p>
+  </section>
+
+  <section class="cinema-poster-slider" aria-label="LAS Cinema poster slider">
+    <button class="cinema-slider-button" type="button" data-cinema-direction="prev" aria-label="이전 포스터">&lt;</button>
+    <div class="cinema-slider-window">
+      <article class="cinema-main-poster is-active" data-cinema-slide="0">
+        <p class="cinema-poster-label">This Month</p>
+        <img src="../images/cinema/this-month.jpg" alt="LAS Cinema 이번 달 상영작 포스터">
+      </article>
+      <article class="cinema-main-poster" data-cinema-slide="1">
+        <p class="cinema-poster-label">Next Month</p>
+        <img src="../images/cinema/next-month.jpg" alt="LAS Cinema 다음 달 상영작 포스터">
+      </article>
+    </div>
+    <button class="cinema-slider-button" type="button" data-cinema-direction="next" aria-label="다음 포스터">&gt;</button>
+  </section>
+
+  <section class="cinema-guide">
+    <h2>이용 안내</h2>
+    <ul>
+      <li>좌석은 선착순입니다.</li>
+      <li>예약은 받지 않습니다.</li>
+      <li>영화 시작 10분 전부터 커피 주문이 제한됩니다.</li>
+      <li>상영계획은 변경될 수 있습니다.</li>
+    </ul>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer-brand">
+    <strong>LAS2023</strong>
+    <p>Listen &amp; Space</p>
+    <p>듣는 공간</p>
+  </div>
+  <div class="footer-contact">
+    <p class="footer-title">Contact</p>
+    <p>울산광역시 울주군 소야정길 75</p>
+    <p><a href="tel:0507-1465-4460">0507-1465-4460</a></p>
+    <p><a href="mailto:tlsspdh94@naver.com">tlsspdh94@naver.com</a></p>
+    <p><a href="#">Instagram</a></p>
+  </div>
+  <div class="footer-hours">
+    <p class="footer-title">Open</p>
+    <p>화요일 - 일요일</p>
+    <p>오전 11시 ~ 오후 8시</p>
+    <p>매주 월요일 휴무</p>
+    <p>© LAS2023. All rights reserved.</p>
+  </div>
+</footer>
+  <script src="../js/script.js"></script>
+  <script>
+    (() => {
+      const slider = document.querySelector(".cinema-poster-slider");
+      if (!slider) return;
+
+      const slides = Array.from(slider.querySelectorAll(".cinema-main-poster"));
+      const buttons = slider.querySelectorAll("[data-cinema-direction]");
+      let currentIndex = 0;
+
+      const showSlide = (index) => {
+        currentIndex = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("is-active", slideIndex === currentIndex);
+        });
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const direction = button.dataset.cinemaDirection === "next" ? 1 : -1;
+          showSlide(currentIndex + direction);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

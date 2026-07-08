@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://las2023.com/sitemap.xml

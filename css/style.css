@@ -1,0 +1,1789 @@
+/* ==========================
+   LAS2023 Official Website
+   Version 1.1
+========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-color: #C8202F;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f7f5f2;
+  color: #222222;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================
+   Header
+========================== */
+
+.site-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: rgba(247, 245, 242, 0.94);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e8e8e8;
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  background: rgba(247, 245, 242, 0.98);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+}
+
+.site-header-inner {
+  width: min(1280px, calc(100% - 112px));
+  height: 96px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: height 0.25s ease;
+}
+
+.site-header.is-scrolled .site-header-inner {
+  height: 90px;
+}
+
+.logo {
+  width: 325px;
+  height: 88px;
+  display: inline-flex;
+  align-items: center;
+  background: url("../images/logo/logo.png") left center / contain no-repeat;
+  font-size: 0;
+  line-height: 0;
+}
+
+.logo.logo-image {
+  width: auto;
+  background: none;
+}
+
+.logo img {
+  width: auto;
+  height: 88px;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.nav a {
+  position: relative;
+  font-size: 17px;
+  font-weight: 500;
+  color: #222222;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 100%;
+  height: 1px;
+  background: #222222;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
+
+.nav a:hover {
+  color: #555555;
+}
+
+.nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav a[aria-current="page"] {
+  color: #222222;
+}
+
+/* ==========================
+   Home Hero
+========================== */
+
+.hero-section {
+  width: min(1320px, calc(100% - 64px));
+  min-height: calc(100vh - 150px);
+  margin: 0 auto;
+  padding: 72px 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hero-text {
+  width: min(100%, 1180px);
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: clamp(76px, 9vw, 136px);
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+}
+
+.subtitle {
+  margin-top: 28px;
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.hero-subtitle-note {
+  margin-top: 12px;
+  color: #222222;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.accent-text {
+  color: var(--accent-color);
+}
+
+.hero-message {
+  margin-top: 56px;
+  font-size: clamp(40px, 4vw, 64px);
+  line-height: 1.32;
+  letter-spacing: -0.05em;
+}
+
+.hero-image {
+  width: min(100%, 1180px);
+  margin-top: 44px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-image img {
+  width: 100%;
+  height: clamp(400px, 42vw, 620px);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  display: block;
+}
+
+.scroll-cue {
+  margin-top: 28px;
+  color: #999999;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.scroll-cue span {
+  display: block;
+}
+
+/* ==========================
+   Common Sections
+========================== */
+
+.home-section {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 120px 0;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-label {
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: #666666;
+  font-weight: 500;
+}
+
+.home-section h2,
+.page-hero h1 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 40px;
+  font-size: 17px;
+  border-bottom: 1px solid #222222;
+  padding-bottom: 4px;
+}
+
+/* ==========================
+   Cinema
+========================== */
+
+.cinema-page {
+  width: min(1200px, calc(100% - 80px));
+}
+
+.cinema-hero {
+  padding: 120px 0 64px;
+  text-align: center;
+}
+
+.cinema-hero p {
+  margin: 24px auto 0;
+  color: #222222;
+  font-size: 24px;
+  max-width: none;
+}
+
+.cinema-poster-slider {
+  width: min(840px, 100%);
+  margin: 0 auto;
+  padding: 0 0 96px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 48px;
+  gap: 12px;
+  align-items: center;
+}
+
+.cinema-slider-window {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.cinema-main-poster {
+  display: none;
+  text-align: center;
+}
+
+.cinema-main-poster.is-active {
+  display: block;
+}
+
+.cinema-main-poster img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.cinema-poster-label {
+  margin-bottom: 18px;
+  color: #666666;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.cinema-slider-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #d8d8d8;
+  border-radius: 50%;
+  background: transparent;
+  color: #222222;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.cinema-slider-button:hover {
+  border-color: #555555;
+  color: #555555;
+}
+
+.cinema-guide h2 {
+  margin-bottom: 32px;
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.cinema-guide {
+  padding: 0 0 140px;
+}
+
+.cinema-guide ul {
+  border-top: 1px solid #d8d8d8;
+  list-style: none;
+}
+
+.cinema-guide li {
+  padding: 22px 0;
+  border-bottom: 1px solid #d8d8d8;
+  color: #444444;
+  font-size: 19px;
+}
+
+/* ==========================
+   Notice
+========================== */
+
+.notice-list {
+  border-top: 1px solid #d8d8d8;
+}
+
+.notice-item {
+  padding: 22px 0;
+  border-bottom: 1px solid #d8d8d8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  font-size: 18px;
+}
+
+.notice-item span:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.notice-item span:last-child {
+  color: #999999;
+  white-space: nowrap;
+}
+
+/* ==========================
+   About Preview
+========================== */
+
+.about-preview {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-text p:not(.section-label),
+.cinema-preview-text p:not(.section-label) {
+  margin-top: 24px;
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+.about-text h2 {
+  font-size: clamp(38px, 4.4vw, 62px);
+}
+
+.about-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-image,
+.cinema-preview-image,
+.event-card,
+.system-category,
+.collection-item,
+.result-card {
+  min-width: 0;
+}
+
+.cinema-preview {
+  display: grid;
+  grid-template-columns: minmax(480px, 0.95fr) 1.05fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.cinema-preview-text h2 {
+  font-size: clamp(38px, 3.6vw, 50px);
+  white-space: nowrap;
+}
+
+.cinema-preview-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ==========================
+   Collection Preview
+========================== */
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #d8d8d8;
+}
+
+.collection-item {
+  background: #f7f5f2;
+  padding: 40px 28px;
+  min-height: 190px;
+}
+
+.collection-item span {
+  display: block;
+  margin-bottom: 34px;
+  font-size: 20px;
+  color: #666666;
+}
+
+.collection-item strong {
+  display: block;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.collection-item p {
+  margin-top: 12px;
+  color: #666666;
+  font-size: 18px;
+}
+
+/* ==========================
+   Footer
+========================== */
+
+.site-footer {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 80px 0;
+  border-top: 1px solid #d8d8d8;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 40px;
+  align-items: start;
+  color: #666666;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.site-footer strong {
+  display: block;
+  color: #222222;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.site-footer a {
+  transition: opacity 0.2s ease;
+}
+
+.site-footer a:hover {
+  opacity: 0.64;
+}
+
+.footer-contact,
+.footer-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-hours {
+  text-align: right;
+}
+
+.footer-title {
+  color: #222222;
+  font-weight: 700;
+}
+
+.footer-hours p:last-child {
+  margin-top: 18px;
+  color: #999999;
+}
+
+/* ==========================
+   Sub Pages
+========================== */
+
+.page-main {
+  width: min(1200px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.page-hero {
+  padding: 120px 0 80px;
+}
+
+.page-hero p:not(.section-label) {
+  margin-top: 24px;
+  font-size: 24px;
+  color: #666666;
+  max-width: 760px;
+}
+
+.about-page {
+  width: min(1280px, calc(100% - 96px));
+}
+
+.about-intro {
+  width: min(860px, 100%);
+  margin: 0 auto;
+  padding: 140px 0 120px;
+  text-align: center;
+}
+
+.about-intro h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.about-intro-copy {
+  max-width: 820px;
+  margin: 40px auto 0;
+  color: #444444;
+  font-size: 21px;
+  line-height: 1.82;
+}
+
+.about-intro-copy p + p {
+  margin-top: 23px;
+}
+
+.page-split {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+  padding: 60px 0 140px;
+}
+
+.page-split h2 {
+  font-size: 42px;
+  letter-spacing: -0.05em;
+  margin-bottom: 24px;
+}
+
+.page-split p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #555555;
+}
+
+.page-split img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+}
+
+.about-gallery {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding: 0 0 140px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.about-gallery img {
+  width: min(660px, 74vw);
+  height: 420px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border-radius: 8px;
+  pointer-events: none;
+  scroll-snap-align: start;
+}
+
+.about-gallery.is-dragging {
+  cursor: grabbing;
+}
+
+.about-closing {
+  padding: 20px 0 150px;
+  text-align: center;
+}
+
+.about-closing p {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.35;
+  letter-spacing: -0.05em;
+}
+
+/* ==========================
+   Event
+========================== */
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  padding: 0 0 120px;
+}
+
+.event-page .page-hero {
+  padding-bottom: 56px;
+}
+
+.event-card {
+  display: grid;
+  gap: 24px;
+  text-align: center;
+}
+
+.event-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.event-card p {
+  margin-bottom: 8px;
+  color: #666666;
+  font-size: 15px;
+}
+
+.event-card h2 {
+  color: #222222;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+}
+
+.event-card span {
+  display: block;
+  margin-top: 12px;
+  color: #555555;
+  font-size: 17px;
+}
+
+/* ==========================
+   System
+========================== */
+
+.system-page {
+  width: min(1200px, calc(100% - 80px));
+}
+
+.system-visual {
+  padding: 0 0 100px;
+}
+
+.system-visual img {
+  width: 100%;
+  height: min(58vw, 620px);
+  min-height: 360px;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.system-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 64px;
+  padding-bottom: 110px;
+  border-top: 1px solid #d8d8d8;
+}
+
+.system-category {
+  padding: 32px 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.system-category h2 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.system-category ul {
+  list-style: none;
+}
+
+.system-category li {
+  color: #555555;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.system-closing {
+  max-width: 720px;
+  padding: 0 0 150px;
+}
+
+.system-closing h2 {
+  margin-bottom: 24px;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.15;
+  letter-spacing: -0.06em;
+}
+
+.system-closing p {
+  color: #555555;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.rental-page {
+  width: min(920px, calc(100% - 80px));
+}
+
+.rental-hero {
+  padding: 120px 0 96px;
+}
+
+.rental-hero p {
+  color: #222222;
+}
+
+.rental-section {
+  padding: 0 0 96px;
+}
+
+.rental-section h2 {
+  margin-bottom: 28px;
+  font-size: 34px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+}
+
+.rental-section p,
+.rental-section li {
+  max-width: 760px;
+  color: #444444;
+  font-size: 19px;
+  line-height: 1.85;
+}
+
+.rental-section p + p {
+  margin-top: 14px;
+}
+
+.rental-section ul {
+  list-style: none;
+  border-top: 1px solid #d8d8d8;
+}
+
+.rental-section li {
+  padding: 16px 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.rental-subsection {
+  margin-top: 64px;
+}
+
+.rental-subsection h3,
+.rental-equipment-grid h3 {
+  margin-bottom: 18px;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.rental-table-wrap {
+  margin-top: 28px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rental-table-wrap table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  color: #222222;
+}
+
+.rental-table-wrap caption {
+  margin-bottom: 18px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rental-table-wrap th,
+.rental-table-wrap td {
+  padding: 18px 16px;
+  border-top: 1px solid #d8d8d8;
+  text-align: left;
+  font-size: 17px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.rental-table-wrap th {
+  color: #222222;
+  font-weight: 600;
+}
+
+.rental-table-wrap tbody tr:last-child td {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.rental-equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 56px 80px;
+}
+
+.rental-note {
+  padding: 0 0 140px;
+  color: #666666;
+  font-size: 17px;
+}
+
+.simple-card {
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  padding: 48px 0 120px;
+}
+
+.simple-card h2 {
+  font-size: 42px;
+  margin-bottom: 24px;
+}
+
+.simple-card p {
+  font-size: 20px;
+  color: #555555;
+}
+
+/* ==========================
+   Calendar
+========================== */
+
+.calendar-section {
+  padding: 0 0 140px;
+}
+
+.calendar-page .page-hero {
+  padding: 96px 0 32px;
+}
+
+.calendar-page .page-hero .section-label {
+  color: #222222;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.calendar-notice-section {
+  max-width: none;
+  margin-bottom: 36px;
+}
+
+.calendar-notice-section h2 {
+  margin-bottom: 24px;
+  color: #222222;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.calendar-notice-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.calendar-notice-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.calendar-notice-bullet {
+  display: none;
+}
+
+.calendar-notice-date,
+.calendar-notice-title,
+.calendar-notice-time {
+  margin: 0;
+}
+
+.calendar-notice-date {
+  color: #222222;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.calendar-notice-title,
+.calendar-notice-time {
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.calendar-heading {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: end;
+}
+
+.calendar-heading h2 {
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+}
+
+.calendar-heading p {
+  color: #666666;
+  font-size: 17px;
+}
+
+.business-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-top: 1px solid #222222;
+  border-left: 1px solid #d8d8d8;
+}
+
+.calendar-weekday,
+.calendar-day {
+  border-right: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.calendar-weekday {
+  padding: 14px 10px;
+  color: #666666;
+  font-size: 15px;
+  text-align: center;
+}
+
+.calendar-day {
+  min-height: 132px;
+  padding: 14px;
+  position: relative;
+}
+
+.calendar-day.is-empty {
+  color: transparent;
+}
+
+.calendar-date {
+  color: #222222;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.calendar-day.is-holiday .calendar-date {
+  display: inline-block;
+}
+
+.calendar-day.is-sunday .calendar-date,
+.calendar-day.is-holiday .calendar-date {
+  color: var(--accent-color);
+}
+
+.calendar-holiday {
+  display: inline-block;
+  margin-top: 0;
+  margin-left: 8px;
+  color: var(--accent-color);
+  font-size: 14px;
+  line-height: 1.35;
+  vertical-align: baseline;
+}
+
+.calendar-event {
+  margin-top: 14px;
+  display: grid;
+  gap: 2px;
+  color: #555555;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.calendar-status {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% - 20px);
+  color: #555555;
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.calendar-day.is-holiday .calendar-status {
+  color: #222222;
+}
+
+/* ==========================
+   Collection Search
+========================== */
+
+.collection-page .page-hero {
+  padding-bottom: 56px;
+}
+
+.collection-temp {
+  min-height: auto;
+}
+
+.collection-subtitle {
+  margin-top: 24px;
+  color: #222222;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.search-section {
+  padding: 0 0 140px;
+}
+
+.collection-temp-message {
+  padding: 56px 0 0;
+  color: #555555;
+  font-size: 22px;
+  line-height: 1.7;
+}
+
+#collectionSearch {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 28px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #222222;
+  border-radius: 0;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: -0.04em;
+  outline: 0;
+}
+
+#collectionSearch::placeholder {
+  color: #999999;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 28px 0 64px;
+}
+
+.filter-buttons button {
+  border: 0;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  padding: 0 0 6px;
+  font-size: 16px;
+  color: #666666;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-buttons button.active,
+.filter-buttons button:hover {
+  color: #222222;
+  border-color: #222222;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #d8d8d8;
+}
+
+.result-card {
+  background: #f7f5f2;
+  padding: 34px 28px;
+  min-height: 220px;
+}
+
+.result-card small {
+  display: block;
+  color: #666666;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.result-card h3 {
+  color: #222222;
+  font-size: 30px;
+  line-height: 1.18;
+  margin: 22px 0 12px;
+  letter-spacing: -0.04em;
+}
+
+.result-card p {
+  color: #555555;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.result-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.result-tags span {
+  font-size: 13px;
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 4px;
+  color: #666666;
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+  .event-card img {
+    height: auto;
+  }
+}
+
+@media (hover: none) {
+  .nav a:hover {
+    color: #222222;
+  }
+
+  .site-footer a:hover {
+    opacity: 1;
+  }
+
+  .cinema-slider-button:hover {
+    border-color: #d8d8d8;
+    color: #222222;
+  }
+
+  .filter-buttons button:hover {
+    color: #666666;
+    border-color: transparent;
+  }
+
+  .filter-buttons button.active {
+    color: #222222;
+    border-color: #222222;
+  }
+}
+
+/* ==========================
+   Responsive: Tablet
+========================== */
+
+@media (max-width: 900px) {
+  .site-header-inner {
+    width: min(100% - 40px, 1280px);
+    height: 84px;
+    padding: 0;
+    align-items: center;
+  }
+
+  .site-header.is-scrolled .site-header-inner {
+    height: 80px;
+  }
+
+  .logo {
+    width: 210px;
+    height: 56px;
+  }
+
+  .logo.logo-image {
+    width: auto;
+  }
+
+  .logo img {
+    height: 56px;
+  }
+
+  .nav {
+    gap: 22px;
+    overflow-x: auto;
+    padding-bottom: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+
+  .hero-section {
+    width: min(100% - 32px, 1320px);
+    min-height: auto;
+    padding: 60px 0 64px;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(64px, 13vw, 96px);
+  }
+
+  .subtitle {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+
+  .hero-message {
+    font-size: 42px;
+    line-height: 1.34;
+    margin-top: 52px;
+  }
+
+  .hero-image {
+    margin-top: 42px;
+  }
+
+  .hero-image img {
+    height: clamp(320px, 58vw, 500px);
+  }
+
+  .scroll-cue {
+    margin-top: 24px;
+    font-size: 14px;
+  }
+
+  .home-section,
+  .page-main,
+  .site-footer {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .about-page {
+    width: min(100% - 32px, 1280px);
+  }
+
+  .home-section {
+    padding: 80px 0;
+  }
+
+  .cinema-page {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .cinema-hero {
+    padding: 80px 0 48px;
+  }
+
+  .cinema-guide {
+    padding-bottom: 100px;
+  }
+
+  .cinema-poster-slider {
+    width: 100%;
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    gap: 10px;
+    padding-bottom: 80px;
+  }
+
+  .cinema-slider-window {
+    width: min(680px, 100%);
+  }
+
+  .cinema-slider-button {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+
+  .notice-item {
+    font-size: 17px;
+    display: block;
+  }
+
+  .notice-item span:last-child {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .about-preview,
+  .cinema-preview,
+  .page-split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .cinema-preview-text h2 {
+    white-space: normal;
+  }
+
+  .event-grid,
+  .system-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .event-grid {
+    padding-bottom: 88px;
+  }
+
+  .system-page {
+    width: min(100% - 32px, 1200px);
+  }
+
+  .system-visual {
+    padding-bottom: 80px;
+  }
+
+  .system-visual img {
+    height: 420px;
+    min-height: 0;
+  }
+
+  .system-list {
+    padding-bottom: 100px;
+  }
+
+  .about-image img,
+  .cinema-preview-image img,
+  .page-split img {
+    height: 300px;
+  }
+
+  .about-gallery {
+    gap: 16px;
+    padding: 0 0 100px;
+  }
+
+  .about-gallery img {
+    width: 78vw;
+    height: 420px;
+  }
+
+  .about-intro {
+    padding: 100px 0 96px;
+  }
+
+  .about-intro-copy {
+    font-size: 19px;
+    line-height: 1.78;
+  }
+
+  .about-intro-copy p + p {
+    margin-top: 20px;
+  }
+
+  .about-closing {
+    padding: 0 0 110px;
+  }
+
+  .collection-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rental-page {
+    width: min(100% - 32px, 1000px);
+  }
+
+  .rental-hero {
+    padding: 80px 0 72px;
+  }
+
+  .rental-section {
+    padding-bottom: 72px;
+  }
+
+  .rental-section h2 {
+    font-size: 30px;
+  }
+
+  .rental-section p,
+  .rental-section li {
+    font-size: 17px;
+  }
+
+  .rental-equipment-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .rental-note {
+    padding-bottom: 100px;
+  }
+
+  .calendar-section {
+    padding-bottom: 100px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .calendar-page .page-hero {
+    padding: 80px 0 28px;
+  }
+
+  .calendar-notice-section {
+    margin-bottom: 32px;
+  }
+
+  .calendar-notice-list {
+    gap: 24px;
+  }
+
+  .calendar-heading {
+    display: block;
+  }
+
+  .calendar-heading p {
+    margin-top: 16px;
+  }
+
+  .calendar-day {
+    min-height: 110px;
+    padding: 10px;
+  }
+
+  .business-calendar {
+    min-width: 760px;
+  }
+
+  .calendar-status {
+    font-size: 13px;
+  }
+
+  .calendar-event {
+    font-size: 12px;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    padding: 56px 0;
+  }
+
+  .footer-hours {
+    text-align: left;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-page .page-hero {
+    padding-bottom: 40px;
+  }
+
+  .filter-buttons {
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+
+  .result-card {
+    min-height: auto;
+  }
+
+  .page-hero {
+    padding: 80px 0 56px;
+  }
+
+  .page-hero p:not(.section-label) {
+    font-size: 20px;
+  }
+
+  .event-card img {
+    max-height: 70vh;
+  }
+
+  .page-split {
+    padding: 40px 0 100px;
+  }
+}
+
+/* ==========================
+   Responsive: Mobile
+========================== */
+
+@media (max-width: 520px) {
+  .site-header-inner {
+    width: min(100% - 28px, 1280px);
+    display: block;
+    height: auto;
+    padding: 14px 0 12px;
+  }
+
+  .site-header.is-scrolled .site-header-inner {
+    height: auto;
+  }
+
+  .logo {
+    width: 150px;
+    height: 40px;
+  }
+
+  .logo.logo-image {
+    width: auto;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  .nav {
+    gap: 18px;
+    margin-top: 16px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    font-size: 13px;
+  }
+
+  .hero-section h1 {
+    font-size: clamp(56px, 16vw, 72px);
+  }
+
+  .subtitle {
+    font-size: 22px;
+  }
+
+  .hero-subtitle-note {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .hero-message {
+    margin-top: 52px;
+    font-size: 34px;
+    line-height: 1.38;
+  }
+
+  .hero-image img {
+    height: clamp(260px, 72vw, 340px);
+    border-radius: 6px;
+  }
+
+  .scroll-cue {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .home-section h2,
+  .page-hero h1 {
+    font-size: clamp(36px, 10vw, 42px);
+  }
+
+  .cinema-preview-text h2 {
+    font-size: clamp(34px, 9vw, 42px);
+  }
+
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #collectionSearch {
+    font-size: 30px;
+  }
+
+  .collection-subtitle {
+    font-size: 20px;
+  }
+
+  .filter-buttons {
+    gap: 14px 18px;
+  }
+
+  .filter-buttons button {
+    font-size: 15px;
+  }
+
+  .result-card {
+    padding: 28px 0;
+  }
+
+  .result-card h3 {
+    font-size: 26px;
+  }
+
+  .calendar-weekday {
+    padding: 10px 4px;
+    font-size: 13px;
+  }
+
+  .calendar-notice-section h2 {
+    font-size: 22px;
+  }
+
+  .calendar-page .page-hero {
+    padding: 72px 0 24px;
+  }
+
+  .calendar-notice-list {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-notice-date {
+    font-size: 16px;
+  }
+
+  .calendar-notice-title,
+  .calendar-notice-time {
+    font-size: 14px;
+  }
+
+  .calendar-day {
+    min-height: 88px;
+    padding: 8px 5px;
+  }
+
+  .business-calendar {
+    min-width: 720px;
+  }
+
+  .calendar-date {
+    font-size: 15px;
+  }
+
+  .calendar-holiday {
+    margin-top: 0;
+    margin-left: 5px;
+    font-size: 11px;
+  }
+
+  .calendar-status {
+    width: calc(100% - 8px);
+    font-size: 11px;
+  }
+
+  .calendar-event {
+    margin-top: 8px;
+    font-size: 10px;
+  }
+
+  .cinema-hero p {
+    font-size: 20px;
+  }
+
+  .cinema-guide h2 {
+    font-size: 30px;
+  }
+
+  .cinema-guide li {
+    font-size: 17px;
+  }
+
+  .event-grid {
+    gap: 48px;
+  }
+
+  .event-card img,
+  .system-visual img {
+    border-radius: 6px;
+  }
+
+  .system-visual img {
+    height: 300px;
+  }
+
+  .system-category {
+    padding: 30px 0;
+  }
+
+  .system-category li {
+    font-size: 16px;
+  }
+
+  .rental-table-wrap table {
+    min-width: 640px;
+  }
+
+  .rental-table-wrap th,
+  .rental-table-wrap td {
+    padding: 16px 14px;
+    font-size: 16px;
+  }
+
+  .cinema-poster-slider {
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
+    gap: 4px;
+    padding-bottom: 72px;
+  }
+
+  .cinema-slider-window {
+    width: 100%;
+  }
+
+  .cinema-slider-button {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .cinema-poster-label {
+    font-size: 15px;
+  }
+
+  .about-gallery img {
+    width: 86vw;
+    height: 320px;
+  }
+
+  .cinema-preview-image img,
+  .system-visual img {
+    height: clamp(260px, 70vw, 320px);
+  }
+
+  .event-card img {
+    max-height: 68vh;
+  }
+
+  .about-intro-copy {
+    font-size: 18px;
+    line-height: 1.76;
+  }
+
+  .about-intro-copy p + p {
+    margin-top: 18px;
+  }
+
+  .about-intro {
+    padding: 80px 0 80px;
+  }
+}

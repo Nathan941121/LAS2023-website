@@ -1,0 +1,47 @@
+[
+  {
+    "type": "Blu-ray",
+    "title": "Interstellar",
+    "subtitle": "Christopher Nolan",
+    "tags": [
+      "Film",
+      "Sci-Fi"
+    ]
+  },
+  {
+    "type": "Blu-ray",
+    "title": "La La Land",
+    "subtitle": "Damien Chazelle",
+    "tags": [
+      "Film",
+      "Music"
+    ]
+  },
+  {
+    "type": "CD",
+    "title": "Bach: Goldberg Variations",
+    "subtitle": "Classical",
+    "tags": [
+      "CD",
+      "Classical"
+    ]
+  },
+  {
+    "type": "LP",
+    "title": "Kind of Blue",
+    "subtitle": "Miles Davis",
+    "tags": [
+      "LP",
+      "Jazz"
+    ]
+  },
+  {
+    "type": "Book",
+    "title": "Cinema Paradiso",
+    "subtitle": "Film & Music",
+    "tags": [
+      "Book",
+      "Cinema"
+    ]
+  }
+]
