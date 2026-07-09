@@ -1997,9 +1997,13 @@ main,
   }
 
   .calendar-event {
-    width: calc(100% - 6px);
-    font-size: 9px;
-    line-height: 1.25;
+    width: calc(100% - 8px);
+    max-width: calc(100% - 8px);
+    font-size: clamp(10px, 2.6vw, 12px);
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    white-space: normal;
   }
 
   .cinema-hero p {
