@@ -49,7 +49,7 @@
       <a href="system.html">System</a>
       <div class="mobile-nav-contact" aria-label="Contact">
         <strong>LAS2023</strong>
-        <a href="https://map.naver.com/p/search/울산광역시%20울주군%20소야정길%2075" target="_blank" rel="noopener noreferrer">Address</a>
+        <a href="https://naver.me/FjbnFukI" target="_blank" rel="noopener noreferrer">Address</a>
         <a href="https://www.instagram.com/las2023_official/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </nav>
@@ -65,26 +65,29 @@
 <main class="page-main event-page">
   <section class="page-hero">
     <h1>Event</h1>
-    <p>연주회와 특별 행사</p>
   </section>
 
-  <section class="event-grid" aria-label="LAS2023 행사">
-    <article class="event-card">
-      <img src="../images/event/event-01.jpg" alt="LAS2023 2025 지난 연주회 포스터">
-      <div>
-        <p>지난 연주회</p>
-        <h2>A Winter's Gift</h2>
-        <span>2025.12.27</span>
-      </div>
-    </article>
-    <article class="event-card">
-      <img src="../images/event/event-02.jpg" alt="LAS2023 2026 지난 연주회 포스터">
-      <div>
-        <p>지난 연주회</p>
-        <h2>기억과 위로</h2>
-        <span>2026.06.06</span>
-      </div>
-    </article>
+  <section class="event-slider" aria-label="LAS2023 행사">
+    <button class="event-slider-button event-slider-prev" type="button" aria-label="이전 행사 보기">&lt;</button>
+    <div class="event-slider-window">
+      <article class="event-card is-active">
+        <div>
+          <p>지난 연주회</p>
+          <h2>기억과 위로</h2>
+          <span>2026.06.06</span>
+        </div>
+        <img src="../images/event/event-02.jpg" alt="LAS2023 2026 지난 연주회 포스터">
+      </article>
+      <article class="event-card">
+        <div>
+          <p>지난 연주회</p>
+          <h2>A Winter's Gift</h2>
+          <span>2025.12.27</span>
+        </div>
+        <img src="../images/event/event-01.jpg" alt="LAS2023 2025 지난 연주회 포스터">
+      </article>
+    </div>
+    <button class="event-slider-button event-slider-next" type="button" aria-label="다음 행사 보기">&gt;</button>
   </section>
 </main>
 <footer class="site-footer">
@@ -95,7 +98,7 @@
   </div>
   <div class="footer-contact">
     <p class="footer-title">Contact</p>
-    <p><a class="footer-address-link" href="https://map.naver.com/p/search/울산광역시%20울주군%20소야정길%2075" target="_blank" rel="noopener noreferrer">울산광역시 울주군 소야정길 75</a></p>
+    <p><a class="footer-address-link" href="https://naver.me/FjbnFukI" target="_blank" rel="noopener noreferrer">울산광역시 울주군 소야정길 75</a></p>
     <p><a href="tel:0507-1465-4460">0507-1465-4460</a></p>
     <p><a href="mailto:tlsspdh94@naver.com">tlsspdh94@naver.com</a></p>
     <p><a href="https://www.instagram.com/las2023_official/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
@@ -109,5 +112,48 @@
   </div>
 </footer>
   <script src="../js/script.js"></script>
+  <script>
+    const eventSlides = document.querySelectorAll('.event-card');
+    const eventWindow = document.querySelector('.event-slider-window');
+    const eventPrev = document.querySelector('.event-slider-prev');
+    const eventNext = document.querySelector('.event-slider-next');
+    let eventIndex = 0;
+    let eventTouchStart = 0;
+
+    function showEventSlide(index) {
+      eventSlides.forEach((slide, slideIndex) => {
+        slide.classList.toggle('is-active', slideIndex === index);
+      });
+    }
+
+    if (eventSlides.length && eventWindow && eventPrev && eventNext) {
+      eventPrev.addEventListener('click', () => {
+        eventIndex = (eventIndex - 1 + eventSlides.length) % eventSlides.length;
+        showEventSlide(eventIndex);
+      });
+
+      eventNext.addEventListener('click', () => {
+        eventIndex = (eventIndex + 1) % eventSlides.length;
+        showEventSlide(eventIndex);
+      });
+
+      eventWindow.addEventListener('touchstart', (event) => {
+        eventTouchStart = event.touches[0].clientX;
+      }, { passive: true });
+
+      eventWindow.addEventListener('touchend', (event) => {
+        const touchEnd = event.changedTouches[0].clientX;
+        const diff = eventTouchStart - touchEnd;
+
+        if (Math.abs(diff) < 40) return;
+
+        eventIndex = diff > 0
+          ? (eventIndex + 1) % eventSlides.length
+          : (eventIndex - 1 + eventSlides.length) % eventSlides.length;
+
+        showEventSlide(eventIndex);
+      }, { passive: true });
+    }
+  </script>
 </body>
 </html>

@@ -702,21 +702,33 @@ img {
    Event
 ========================== */
 
-.event-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
-  padding: 0 0 120px;
+.event-page .page-hero {
+  padding-bottom: 32px;
 }
 
-.event-page .page-hero {
-  padding-bottom: 56px;
+.event-slider {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 0 0 120px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  gap: 16px;
+  align-items: center;
+}
+
+.event-slider-window {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .event-card {
-  display: grid;
+  display: none;
   gap: 24px;
   text-align: center;
+}
+
+.event-card.is-active {
+  display: grid;
 }
 
 .event-card img {
@@ -744,6 +756,26 @@ img {
   margin-top: 12px;
   color: #555555;
   font-size: 17px;
+}
+
+.event-slider-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d8d8d8;
+  border-radius: 50%;
+  background: transparent;
+  color: #222222;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.event-slider-button:hover {
+  border-color: #555555;
+  color: #555555;
 }
 
 /* ==========================
@@ -1248,6 +1280,11 @@ img {
     color: #222222;
   }
 
+  .event-slider-button:hover {
+    border-color: #d8d8d8;
+    color: #222222;
+  }
+
   .filter-buttons button:hover {
     color: #666666;
     border-color: transparent;
@@ -1403,13 +1440,13 @@ img {
     white-space: normal;
   }
 
-  .event-grid,
   .system-list {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  .event-grid {
+  .event-slider {
+    width: min(760px, 100%);
     padding-bottom: 88px;
   }
 
@@ -1499,8 +1536,6 @@ img {
 
   .calendar-section {
     padding-bottom: 100px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .calendar-page .page-hero {
@@ -1529,7 +1564,7 @@ img {
   }
 
   .business-calendar {
-    min-width: 760px;
+    min-width: 0;
   }
 
   .calendar-status {
@@ -1709,45 +1744,48 @@ img {
   }
 
   .calendar-notice-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .calendar-notice-date {
-    font-size: 16px;
+    font-size: 13px;
   }
 
   .calendar-notice-title,
   .calendar-notice-time {
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 1.5;
   }
 
   .calendar-day {
-    min-height: 88px;
-    padding: 8px 5px;
+    min-height: 70px;
+    padding: 6px 4px;
   }
 
   .business-calendar {
-    min-width: 720px;
+    min-width: 0;
   }
 
   .calendar-date {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .calendar-holiday {
     margin-top: 0;
-    margin-left: 5px;
-    font-size: 11px;
+    margin-left: 3px;
+    font-size: 9px;
   }
 
   .calendar-status {
-    width: calc(100% - 8px);
-    font-size: 11px;
+    width: calc(100% - 6px);
+    font-size: 9px;
   }
 
   .calendar-event {
-    margin-top: 8px;
-    font-size: 10px;
+    margin-top: 6px;
+    font-size: 8px;
+    line-height: 1.25;
   }
 
   .cinema-hero p {
@@ -1762,8 +1800,17 @@ img {
     font-size: 17px;
   }
 
-  .event-grid {
-    gap: 48px;
+  .event-slider {
+    width: 100%;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
+    gap: 6px;
+    padding-bottom: 80px;
+  }
+
+  .event-slider-button {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
   }
 
   .event-card img,
