@@ -2231,6 +2231,32 @@ main,
   .nav a::after {
     display: none;
   }
+
+  .calendar-status,
+  .calendar-event {
+    width: calc(100% - 8px);
+    font-size: 10px;
+    line-height: 1.18;
+  }
+
+  .calendar-event {
+    gap: 1px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .calendar-event span {
+    display: block;
+    max-width: 100%;
+  }
+
+  .calendar-event span:last-child {
+    width: 36px;
+    margin: 0 auto;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
 }
 
 @media (max-width: 520px) {
