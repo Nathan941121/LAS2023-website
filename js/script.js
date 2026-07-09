@@ -164,8 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
       date: '2026-07-15',
       dayText: '7월 15일',
       title: '대관',
-      displayTime: '오후 1시 ~ 오후 2시',
-      calendarTime: '13:00~14:00',
+      displayTime: '오후 2시 30분 ~ 오후 4시',
+      calendarTime: '14:30~16:00',
       showInCalendar: true
     },
     {
@@ -240,8 +240,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cells.push(`
       <div class="${classes}">
-        <div class="calendar-date">${dateNumber}</div>
-        ${holiday ? `<div class="calendar-holiday">${holiday}</div>` : ''}
+        <div class="calendar-date-line">
+          <span class="calendar-date">${dateNumber}</span>
+          ${holiday ? `<span class="calendar-holiday">${holiday}</span>` : ''}
+        </div>
         ${dayNotices.map((notice) => `
           <div class="calendar-event">
             <span>${notice.title}</span>
