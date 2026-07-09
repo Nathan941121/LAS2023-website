@@ -744,9 +744,12 @@ main,
 }
 
 .about-closing p {
-  font-size: clamp(42px, 5vw, 76px);
-  line-height: 1.28;
-  letter-spacing: -0.05em;
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.03em;
 }
 
 /* ==========================
@@ -1564,6 +1567,10 @@ main,
     padding: 0 0 110px;
   }
 
+  .about-closing p {
+    font-size: 28px;
+  }
+
   .collection-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1963,6 +1970,12 @@ main,
 
   .listening-philosophy-copy p + p {
     margin-top: 28px;
+  }
+
+  .about-closing p {
+    font-size: 24px;
+    line-height: 1.65;
+    letter-spacing: -0.02em;
   }
 }
 
