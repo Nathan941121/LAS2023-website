@@ -1226,12 +1226,19 @@ main,
 }
 
 .calendar-event {
-  margin-top: 14px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% - 20px);
+  margin-top: 0;
   display: grid;
-  gap: 2px;
-  color: #555555;
-  font-size: 13px;
+  gap: 3px;
+  color: var(--accent-color);
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1.35;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 
 .calendar-status {
@@ -1707,19 +1714,7 @@ main,
   }
 
   .calendar-event {
-    font-size: 12px;
-  }
-
-  .site-footer {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 44px 0;
-    font-size: 14px;
-    line-height: 1.55;
-  }
-
-  .footer-hours {
-    text-align: left;
+    font-size: 13px;
   }
 
   .results-grid {
@@ -1937,13 +1932,25 @@ main,
   }
 
   .calendar-event {
-    margin-top: 6px;
-    font-size: 8px;
+    width: calc(100% - 6px);
+    font-size: 9px;
     line-height: 1.25;
   }
 
   .cinema-hero p {
     font-size: 20px;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 44px 0;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .footer-hours {
+    text-align: left;
   }
 
   .cinema-guide h2 {
