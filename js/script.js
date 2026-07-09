@@ -128,13 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const calendar = document.getElementById('businessCalendar');
-  const title = document.getElementById('calendarTitle');
   const noticeList = document.getElementById('calendarNotices');
-  if (!calendar || !title) return;
+  if (!calendar) return;
 
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
+  const calendarMonths = [
+    { year: 2026, month: 6 },
+    { year: 2026, month: 7 }
+  ];
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const publicHolidays = {
     '2026-01-01': '신정',
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dayText: '7월 15일',
       title: '대관',
       displayTime: '오후 2시 30분 ~ 오후 4시',
-      calendarTime: '14:30~16:00',
+      calendarTime: '',
       showInCalendar: true
     },
     {
@@ -178,7 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
   const specialOpenDays = {
-    '2026-07-17': '정상영업'
+    '2026-07-17': '정상영업',
+    '2026-08-17': '정상 영업'
   };
 
   const formatDateKey = (date) => {
@@ -187,8 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return `${date.getFullYear()}-${mm}-${dd}`;
   };
 
-  const firstDay = new Date(year, month, 1);
-  const lastDate = new Date(year, month + 1, 0).getDate();
   const noticesByDate = calendarNotices.reduce((acc, notice) => {
     if (!acc[notice.date]) {
       acc[notice.date] = [];
@@ -197,9 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
     acc[notice.date].push(notice);
     return acc;
   }, {});
-  const cells = [];
-
-  title.textContent = `${year}년 ${month + 1}월`;
 
   if (noticeList) {
     noticeList.innerHTML = calendarNotices.map((notice) => `
@@ -214,46 +210,64 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  weekdays.forEach((weekday) => {
-    cells.push(`<div class="calendar-weekday">${weekday}</div>`);
-  });
+  const renderMonth = ({ year, month }) => {
+    const firstDay = new Date(year, month, 1);
+    const lastDate = new Date(year, month + 1, 0).getDate();
+    const cells = [];
 
-  for (let i = 0; i < firstDay.getDay(); i += 1) {
-    cells.push('<div class="calendar-day is-empty" aria-hidden="true"></div>');
-  }
+    weekdays.forEach((weekday) => {
+      cells.push(`<div class="calendar-weekday">${weekday}</div>`);
+    });
 
-  for (let dateNumber = 1; dateNumber <= lastDate; dateNumber += 1) {
-    const date = new Date(year, month, dateNumber);
-    const dateKey = formatDateKey(date);
-    const holiday = publicHolidays[dateKey];
-    const isMonday = date.getDay() === 1;
-    const isSunday = date.getDay() === 0;
-    const specialOpen = specialOpenDays[dateKey];
-    const status = specialOpen || (isMonday ? (holiday ? '정상영업' : '정기 휴무') : '');
-    const dayNotices = (noticesByDate[dateKey] || []).filter((notice) => notice.showInCalendar);
-    const classes = [
-      'calendar-day',
-      isSunday ? 'is-sunday' : '',
-      isMonday ? 'is-monday' : '',
-      holiday ? 'is-holiday' : ''
-    ].filter(Boolean).join(' ');
+    for (let i = 0; i < firstDay.getDay(); i += 1) {
+      cells.push('<div class="calendar-day is-empty" aria-hidden="true"></div>');
+    }
 
-    cells.push(`
-      <div class="${classes}">
-        <div class="calendar-date-line">
-          <span class="calendar-date">${dateNumber}</span>
-          ${holiday ? `<span class="calendar-holiday">${holiday}</span>` : ''}
-        </div>
-        ${dayNotices.map((notice) => `
-          <div class="calendar-event">
-            <span>${notice.title}</span>
-            <span>${notice.calendarTime}</span>
+    for (let dateNumber = 1; dateNumber <= lastDate; dateNumber += 1) {
+      const date = new Date(year, month, dateNumber);
+      const dateKey = formatDateKey(date);
+      const holiday = publicHolidays[dateKey];
+      const isMonday = date.getDay() === 1;
+      const isSunday = date.getDay() === 0;
+      const specialOpen = specialOpenDays[dateKey];
+      const status = specialOpen || (isMonday ? (holiday ? '정상영업' : '정기 휴무') : '');
+      const dayNotices = (noticesByDate[dateKey] || []).filter((notice) => notice.showInCalendar);
+      const classes = [
+        'calendar-day',
+        isSunday ? 'is-sunday' : '',
+        isMonday ? 'is-monday' : '',
+        holiday ? 'is-holiday' : ''
+      ].filter(Boolean).join(' ');
+
+      cells.push(`
+        <div class="${classes}">
+          <div class="calendar-date-line">
+            <span class="calendar-date">${dateNumber}</span>
+            ${holiday ? `<span class="calendar-holiday">${holiday}</span>` : ''}
           </div>
-        `).join('')}
-        ${status ? `<div class="calendar-status">${status}</div>` : ''}
-      </div>
-    `);
-  }
+          ${dayNotices.map((notice) => `
+            <div class="calendar-event">
+              <span>${notice.title}</span>
+              ${notice.calendarTime ? `<span>${notice.calendarTime}</span>` : ''}
+            </div>
+          `).join('')}
+          ${status ? `<div class="calendar-status">${status}</div>` : ''}
+        </div>
+      `);
+    }
 
-  calendar.innerHTML = cells.join('');
+    return `
+      <article class="calendar-month-panel" aria-label="${year}년 ${month + 1}월 영업일정">
+        <div class="calendar-heading">
+          <h2>${year}년 ${month + 1}월</h2>
+          <p>화 - 일 11:00 - 20:00 / 매주 월요일 휴무</p>
+        </div>
+        <div class="business-calendar">
+          ${cells.join('')}
+        </div>
+      </article>
+    `;
+  };
+
+  calendar.innerHTML = calendarMonths.map(renderMonth).join('');
 });

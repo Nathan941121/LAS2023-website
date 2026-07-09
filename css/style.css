@@ -1213,6 +1213,28 @@ main,
   font-size: 17px;
 }
 
+.calendar-months {
+  display: flex;
+  gap: 48px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 18px;
+}
+
+.calendar-months::-webkit-scrollbar {
+  height: 4px;
+}
+
+.calendar-months::-webkit-scrollbar-thumb {
+  background: #d8d8d8;
+}
+
+.calendar-month-panel {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
 .business-calendar {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -1285,7 +1307,7 @@ main,
   gap: 3px;
   color: var(--accent-color);
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.35;
   text-align: center;
   transform: translate(-50%, -50%);
@@ -1305,6 +1327,10 @@ main,
 
 .calendar-day.is-holiday .calendar-status {
   color: #222222;
+}
+
+.calendar-day.is-monday:not(.is-holiday) .calendar-status {
+  color: var(--accent-color);
 }
 
 /* ==========================
@@ -1750,6 +1776,10 @@ main,
     margin-top: 16px;
   }
 
+  .calendar-months {
+    gap: 28px;
+  }
+
   .calendar-day {
     min-height: 110px;
     padding: 10px;
@@ -1765,6 +1795,7 @@ main,
 
   .calendar-event {
     font-size: 13px;
+    font-weight: 400;
   }
 
   .results-grid {
@@ -1972,6 +2003,10 @@ main,
     padding: 6px 4px;
   }
 
+  .calendar-months {
+    gap: 20px;
+  }
+
   .business-calendar {
     min-width: 0;
   }
@@ -2000,6 +2035,7 @@ main,
     width: calc(100% - 8px);
     max-width: calc(100% - 8px);
     font-size: clamp(10px, 2.6vw, 12px);
+    font-weight: 400;
     line-height: 1.18;
     overflow-wrap: anywhere;
     word-break: keep-all;
@@ -2241,7 +2277,7 @@ main,
 
   .calendar-event {
     gap: 1px;
-    font-weight: 700;
+    font-weight: 400;
     overflow-wrap: anywhere;
     white-space: normal;
   }
