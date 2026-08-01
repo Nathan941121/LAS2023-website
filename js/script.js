@@ -178,6 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
       showInCalendar: false
     },
     {
+      date: '2026-08-15',
+      dayText: '8월 15일',
+      title: '광복절 정상영업',
+      displayTime: '오전 11시 ~ 오후 8시',
+      calendarTime: '11:00~20:00',
+      showInCalendar: false
+    },
+    {
       date: '2026-08-17',
       dayText: '8월 17일',
       title: '대체공휴일 정상영업',
@@ -188,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
   const specialOpenDays = {
     '2026-07-17': '정상영업',
+    '2026-08-15': '정상영업',
     '2026-08-17': '정상영업'
   };
 
