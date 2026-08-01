@@ -133,7 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const calendarMonths = [
     { year: 2026, month: 6 },
-    { year: 2026, month: 7 }
+    { year: 2026, month: 7, isCurrent: true },
+    { year: 2026, month: 8 }
   ];
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const publicHolidays = {
@@ -175,11 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
       displayTime: '오전 11시 ~ 오후 8시',
       calendarTime: '11:00~20:00',
       showInCalendar: false
+    },
+    {
+      date: '2026-08-17',
+      dayText: '8월 17일',
+      title: '대체공휴일 정상영업',
+      displayTime: '오전 11시 ~ 오후 8시',
+      calendarTime: '11:00~20:00',
+      showInCalendar: false
     }
   ];
   const specialOpenDays = {
     '2026-07-17': '정상영업',
-    '2026-08-17': '정상 영업'
+    '2026-08-17': '정상영업'
   };
 
   const formatDateKey = (date) => {
@@ -198,7 +207,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }, {});
 
   if (noticeList) {
-    noticeList.innerHTML = calendarNotices.map((notice) => `
+    const currentMonth = calendarMonths.find((calendarMonth) => calendarMonth.isCurrent);
+    const currentMonthKey = currentMonth
+      ? `${currentMonth.year}-${String(currentMonth.month + 1).padStart(2, '0')}`
+      : '';
+    const visibleNotices = calendarNotices.filter((notice) => notice.date.startsWith(currentMonthKey));
+
+    noticeList.innerHTML = visibleNotices.map((notice) => `
       <article class="calendar-notice-item">
         <span class="calendar-notice-bullet" aria-hidden="true">•</span>
         <div>
@@ -210,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  const renderMonth = ({ year, month }) => {
+  const renderMonth = ({ year, month, isCurrent = false }) => {
     const firstDay = new Date(year, month, 1);
     const lastDate = new Date(year, month + 1, 0).getDate();
     const cells = [];
@@ -257,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     return `
-      <article class="calendar-month-panel" aria-label="${year}년 ${month + 1}월 영업일정">
+      <article class="calendar-month-panel${isCurrent ? ' is-current-month' : ''}" aria-label="${year}년 ${month + 1}월 영업일정">
         <div class="calendar-heading">
           <h2>${year}년 ${month + 1}월</h2>
           <p>화 - 일 11:00 - 20:00 / 매주 월요일 휴무</p>
@@ -270,4 +285,15 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   calendar.innerHTML = calendarMonths.map(renderMonth).join('');
+
+  const currentPanel = calendar.querySelector('.calendar-month-panel.is-current-month');
+  if (currentPanel) {
+    requestAnimationFrame(() => {
+      currentPanel.scrollIntoView({
+        block: 'nearest',
+        inline: 'start',
+        behavior: 'auto'
+      });
+    });
+  }
 });

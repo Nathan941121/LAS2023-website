@@ -368,6 +368,12 @@ main,
   display: block;
 }
 
+.cinema-poster-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
 .cinema-main-poster img {
   width: 100%;
   height: auto;
@@ -1232,6 +1238,7 @@ main,
 
 .calendar-month-panel {
   flex: 0 0 100%;
+  min-width: 0;
   scroll-snap-align: start;
 }
 
@@ -2017,13 +2024,16 @@ main,
 
   .calendar-holiday {
     margin-top: 0;
-    font-size: 9px;
+    font-size: clamp(7px, 2.2vw, 9px);
     line-height: 1.2;
+    white-space: normal;
+    word-break: keep-all;
   }
 
   .calendar-date-line {
     gap: 3px;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .calendar-status {
