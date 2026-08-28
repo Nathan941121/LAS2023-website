@@ -133,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const calendarMonths = [
     { year: 2026, month: 6 },
-    { year: 2026, month: 7, isCurrent: true },
-    { year: 2026, month: 8 }
+    { year: 2026, month: 7 },
+    { year: 2026, month: 8, isCurrent: true }
   ];
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const publicHolidays = {
@@ -152,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
     '2026-07-17': '제헌절',
     '2026-08-15': '광복절',
     '2026-08-17': '대체공휴일',
-    '2026-09-24': '추석 연휴',
+    '2026-09-24': '추석연휴',
     '2026-09-25': '추석',
-    '2026-09-26': '추석 연휴',
+    '2026-09-26': '추석연휴',
     '2026-10-03': '개천절',
     '2026-10-05': '대체공휴일',
     '2026-10-09': '한글날',
@@ -192,12 +192,48 @@ document.addEventListener('DOMContentLoaded', () => {
       displayTime: '오전 11시 ~ 오후 8시',
       calendarTime: '11:00~20:00',
       showInCalendar: false
+    },
+    {
+      date: '2026-09-24',
+      dayText: '9월 24일',
+      title: '추석연휴 정상영업',
+      displayTime: '오전 11시 ~ 오후 8시',
+      calendarTime: '11:00~20:00',
+      showInCalendar: false
+    },
+    {
+      date: '2026-09-25',
+      dayText: '9월 25일',
+      title: '추석 정상영업',
+      displayTime: '오전 11시 ~ 오후 8시',
+      calendarTime: '11:00~20:00',
+      showInCalendar: false
+    },
+    {
+      date: '2026-09-26',
+      dayText: '9월 26일',
+      title: '추석연휴 정상영업',
+      displayTime: '오전 11시 ~ 오후 8시',
+      calendarTime: '11:00~20:00',
+      showInCalendar: false
+    },
+    {
+      date: '2026-09-27',
+      dayText: '9월 27일',
+      title: '일요일 정상영업',
+      displayTime: '오전 11시 ~ 오후 8시',
+      calendarTime: '11:00~20:00',
+      showInCalendar: false
     }
   ];
   const specialOpenDays = {
     '2026-07-17': '정상영업',
     '2026-08-15': '정상영업',
-    '2026-08-17': '정상영업'
+    '2026-08-17': '정상영업',
+    '2026-09-24': '정상영업',
+    '2026-09-25': '정상영업',
+    '2026-09-26': '정상영업',
+    '2026-09-27': '정상영업'
   };
 
   const formatDateKey = (date) => {
@@ -260,7 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'calendar-day',
         isSunday ? 'is-sunday' : '',
         isMonday ? 'is-monday' : '',
-        holiday ? 'is-holiday' : ''
+        holiday ? 'is-holiday' : '',
+        specialOpen ? 'is-special-open' : ''
       ].filter(Boolean).join(' ');
 
       cells.push(`

@@ -1336,6 +1336,10 @@ main,
   color: #222222;
 }
 
+.calendar-day.is-special-open .calendar-status {
+  color: #222222;
+}
+
 .calendar-day.is-monday:not(.is-holiday) .calendar-status {
   color: var(--accent-color);
 }
