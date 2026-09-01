@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!calendar) return;
 
   const calendarMonths = [
-    { year: 2026, month: 6 },
     { year: 2026, month: 7 },
-    { year: 2026, month: 8, isCurrent: true }
+    { year: 2026, month: 8, isCurrent: true },
+    { year: 2026, month: 9 }
   ];
   const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
   const publicHolidays = {
@@ -334,12 +334,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const currentPanel = calendar.querySelector('.calendar-month-panel.is-current-month');
   if (currentPanel) {
-    requestAnimationFrame(() => {
-      currentPanel.scrollIntoView({
-        block: 'nearest',
-        inline: 'start',
+    const showCurrentMonth = () => {
+      calendar.scrollTo({
+        left: currentPanel.offsetLeft - calendar.offsetLeft,
+        top: 0,
         behavior: 'auto'
       });
+    };
+
+    requestAnimationFrame(() => {
+      showCurrentMonth();
+      requestAnimationFrame(showCurrentMonth);
     });
+
+    window.addEventListener('load', showCurrentMonth, { once: true });
+    window.addEventListener('pageshow', showCurrentMonth, { once: true });
   }
 });

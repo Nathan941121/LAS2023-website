@@ -2028,16 +2028,19 @@ main,
 
   .calendar-holiday {
     margin-top: 0;
-    font-size: clamp(7px, 2.2vw, 9px);
+    font-size: clamp(5px, 1.4vw, 9px);
     line-height: 1.2;
     white-space: normal;
     word-break: keep-all;
   }
 
   .calendar-date-line {
-    gap: 3px;
+    width: calc(100% + 8px);
+    margin-right: -4px;
+    margin-left: -4px;
+    gap: 1px;
     align-items: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 
   .calendar-status {
